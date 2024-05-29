@@ -1,6 +1,11 @@
-🌟 Awesome Configuration List
+<div align="center">
+  <h1>🌟 Awesome Configuration List 🌟</h1>
+  <img src='./assets/' />
+  <p>Configurations can be confusing. This is an attempt to make it a little easier by serving as a reference.</p>
+</div>
 
-Configurations can be confusing. This is an attempt to make it a little easier by serving as a reference. ✨
+
+
 
 <br/>
 
