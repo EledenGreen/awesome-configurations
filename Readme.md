@@ -1,5 +1,14 @@
-<!-- toc -->
+🌟 Awesome Configuration List
 
+Configurations can be confusing. This is an attempt to make it a little easier by serving as a reference. ✨
+
+<br/>
+
+**Contents**
+
+<details>
+<summary>Configuration for Full Stack Open Part-0 to Part-7</summary>
+  
 - [Frontend](#frontend)
   - [Vite](#vite)
   - [Axios](#axios)
@@ -24,13 +33,16 @@
 - [Database](#database)
 - [Testing](#testing)
   - [Backend Integration Testing](#backend-integration-testing)
-  - [Vitest Frontend Testing #configuration](#vitest-frontend-testing-%23configuration)
-  - [Playwright Configuration #configuration](#playwright-configuration-%23configuration)
+  - [Vitest Frontend Testing](#vitest-frontend-testing)
+  - [Playwright Configuration](#playwright-configuration)
 - [Styling](#styling)
 - [Deploying to Render](#deploying-to-render)
 
-<!-- tocstop -->
+</details>
 
+<hr/> 
+
+# Configuration for Full Stack Open Part-0 to Part-7
 ## Frontend
 
 ### Vite
@@ -334,7 +346,7 @@ In frontend, the token is fetched from backend (generated in backend) than used.
 
   - [Vitest](https://vitest.dev/)
 
-    - #### Vitest Frontend Testing #configuration
+    - #### Vitest Frontend Testing
 
       - Install
         ```shell
@@ -419,7 +431,7 @@ In frontend, the token is fetched from backend (generated in backend) than used.
 
 - E2E test using Playwright
 
-  - #### Playwright Configuration #configuration
+  - #### Playwright Configuration
 
     - In a new directory, (Playwright doesn't need to be in the project directory)
       ```shell
@@ -595,3 +607,6 @@ In frontend, the token is fetched from backend (generated in backend) than used.
 - Change the root repository where backend src is in Render
   ![Render Root Repository](./assets/github.png)  
   ![Render Settings](./assets/render.png)
+
+*End of Configuration for Full Stack Open Part-0 to Part-7*
+<hr />
