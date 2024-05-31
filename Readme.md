@@ -9,10 +9,10 @@
 
 <br/>
 
-**Contents**
+### Contents
 
-<details>
-<summary>Configuration for Full Stack Open Part-0 to Part-7</summary>
+
+**Configuration for Full Stack Open Part-0 to Part-7**
   
 - [Frontend](#frontend)
   - [Vite](#vite)
@@ -43,7 +43,7 @@
 - [Styling](#styling)
 - [Deploying to Render](#deploying-to-render)
 
-</details>
+
 
 <hr/> 
 
