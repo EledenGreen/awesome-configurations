@@ -231,10 +231,13 @@ In frontend, the token is fetched from backend (generated in backend) than used.
 
 - Setup MongoDB Atlas
 - [mongoose](https://mongoosejs.com/)
+
   ```shell
   npm install mongoose
   ```
   - Elegant [mongodb](https://www.mongodb.com/) object modeling for [node.js](https://nodejs.org/en/).
+    - Note: **mongoose** is specificially for `mongodb`.  
+            So i have to use **inbuilt node-server** for other server even for **local JSON-server**  
   - `app.js`
     ```jsx
     mongoose.set('strictQuery', false)
@@ -247,6 +250,7 @@ In frontend, the token is fetched from backend (generated in backend) than used.
     - Note: This is not used in production because:
       - **In long-running applications** (like web servers): No need to call `mongoose.connection.close()` within the main application flow.
       - **In application shutdown or testing scenarios**: Yes, it's a good practice to close the MongoDB connection.
+      
 - Environment variables using [dotenv](https://www.npmjs.com/package/dotenv)
   ```shell
   npm install dotenv
