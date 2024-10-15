@@ -617,5 +617,30 @@ In frontend, the token is fetched from backend (generated in backend) than used.
   ![Render Root Repository](./assets/github.png)  
   ![Render Settings](./assets/render.png)
 
+## Backend and Frontend communication
+
+- The setup ready for deployment  
+  
+  ![image](https://github.com/user-attachments/assets/6f083597-dc40-47f5-87de-f7bbb3379015)  
+  
+  "One option for deploying the frontend is to copy the production build (the dist directory) to the root of the backend repository and configure the backend to show the frontend's main page (the file dist/index.html) as its main page. To make Express show static content, the page index.html and the JavaScript, etc., it fetches, we need a built-in middleware from Express called static.
+  ```javascript
+  app.use(express.static('dist'))
+  ```
+  whenever Express gets an HTTP GET request it will first check if the dist directory contains a file corresponding to the request's address. If a correct file is found, Express will return it.
+  Now HTTP GET requests to the address www.serversaddress.com/index.html or www.serversaddress.com will show the React frontend. GET requests to the address www.serversaddress.com/api/notes will be handled by     the backend code.Unlike when running the app in a development environment, everything is now in the same node/express-backend that runs in localhost:3001. When the browser goes to the page, the file index.html   is rendered. That causes the browser to fetch the production version of the React app. Once it starts to run, it fetches the json-data from the address localhost:3001/api/notes."
+
+  Basically, the React code is converted into HTML and is then rendered as static files from the html.  
+  (kind of similar to what i learnt from IBM) ![IBM project](https://github.com/EledenGreen/Node.js-MongoDB-Developing-Back-end-Database-Applications-IBM/tree/main/Lab/abltc-backend-nodejs-customerportal)  
+  Here, static files are served from /frontend to Node using:
+  ```javascript
+  // GET endpoint for the root URL, serving the home page
+  app.get('/', async (req, res) => {
+  res.sendFile(path.join(__dirname, 'frontend', 'home.html'))
+  })
+  ```
+    
+
+
 *End of Configuration for Full Stack Open Part-0 to Part-7*
 <hr />
