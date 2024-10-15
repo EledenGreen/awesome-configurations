@@ -4,16 +4,12 @@
   <p>Configurations can be confusing. This is an attempt to make it a little easier by serving as a reference.</p>
 </div>
 
-
-
-
 <br/>
 
 ### Contents
 
-
 **Configuration for Full Stack Open Part-0 to Part-7**
-  
+
 - [Frontend](#frontend)
   - [Vite](#vite)
   - [Axios](#axios)
@@ -43,11 +39,10 @@
 - [Styling](#styling)
 - [Deploying to Render](#deploying-to-render)
 
-
-
-<hr/> 
+<hr/>
 
 # Configuration for Full Stack Open Part-0 to Part-7
+
 ## Frontend
 
 ### Vite
@@ -235,9 +230,10 @@ In frontend, the token is fetched from backend (generated in backend) than used.
   ```shell
   npm install mongoose
   ```
+
   - Elegant [mongodb](https://www.mongodb.com/) object modeling for [node.js](https://nodejs.org/en/).
     - Note: **mongoose** is specificially for `mongodb`.  
-            So i have to use **inbuilt node-server** for other server even for **local JSON-server**  
+       So i have to use **inbuilt node-server** for other server even for **local JSON-server**
   - `app.js`
     ```jsx
     mongoose.set('strictQuery', false)
@@ -250,7 +246,7 @@ In frontend, the token is fetched from backend (generated in backend) than used.
     - Note: This is not used in production because:
       - **In long-running applications** (like web servers): No need to call `mongoose.connection.close()` within the main application flow.
       - **In application shutdown or testing scenarios**: Yes, it's a good practice to close the MongoDB connection.
-      
+
 - Environment variables using [dotenv](https://www.npmjs.com/package/dotenv)
   ```shell
   npm install dotenv
@@ -619,28 +615,46 @@ In frontend, the token is fetched from backend (generated in backend) than used.
 
 ## Backend and Frontend communication
 
-- The setup ready for deployment  
-  
-  ![image](https://github.com/user-attachments/assets/6f083597-dc40-47f5-87de-f7bbb3379015)  
-  
+- Separate Frontend and Backend Repository  
+  In this case, the frontend (vite) is hosted on `http://localhost:5173`.  
+  Frontend communicates with the backend using the **services middleware**
+
+  ![service middleware](./assets/image.png)  
+  Here, the notes.js has the baseUrl of `http:localhost:3001/notes` which is the endpoint of backend.  
+  So any HTTP request made in frontend is send to the backend endpoint.
+  And the business logic is handled by the backend and the response is sent back to frontend.  
+  The setup is as follows:  
+  ![front & backend](./assets/100.png)
+
+- The setup ready for deployment
+
+  ![image](https://github.com/user-attachments/assets/6f083597-dc40-47f5-87de-f7bbb3379015)
+
   "One option for deploying the frontend is to copy the production build (the dist directory) to the root of the backend repository and configure the backend to show the frontend's main page (the file dist/index.html) as its main page. To make Express show static content, the page index.html and the JavaScript, etc., it fetches, we need a built-in middleware from Express called static.
+
   ```javascript
   app.use(express.static('dist'))
   ```
+
   whenever Express gets an HTTP GET request it will first check if the dist directory contains a file corresponding to the request's address. If a correct file is found, Express will return it.
-  Now HTTP GET requests to the address www.serversaddress.com/index.html or www.serversaddress.com will show the React frontend. GET requests to the address www.serversaddress.com/api/notes will be handled by     the backend code.Unlike when running the app in a development environment, everything is now in the same node/express-backend that runs in localhost:3001. When the browser goes to the page, the file index.html   is rendered. That causes the browser to fetch the production version of the React app. Once it starts to run, it fetches the json-data from the address localhost:3001/api/notes."
+
+  Now HTTP GET requests to the address `www.serversaddress.com/index.html` or `www.serversaddress.com` will show the React frontend.
+
+  GET requests to the address `www.serversaddress.com/api/notes` will be handled by the backend code.Unlike when running the app in a development environment, everything is now in the same node/express-backend that runs in `localhost:3001`.
+
+  When the browser goes to the page, the file `index.html` is rendered. That causes the browser to fetch the production version of the React app. Once it starts to run, it fetches the json-data from the address `localhost:3001/api/notes`."
 
   Basically, the React code is converted into HTML and is then rendered as static files from the html.  
   (kind of similar to what i learnt from IBM) ![IBM project](https://github.com/EledenGreen/Node.js-MongoDB-Developing-Back-end-Database-Applications-IBM/tree/main/Lab/abltc-backend-nodejs-customerportal)  
-  Here, static files are served from /frontend to Node using:
+  whrere static files are served from /frontend to Node using:
+
   ```javascript
   // GET endpoint for the root URL, serving the home page
   app.get('/', async (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'home.html'))
+    res.sendFile(path.join(__dirname, 'frontend', 'home.html'))
   })
   ```
-    
 
+_End of Configuration for Full Stack Open Part-0 to Part-7_
 
-*End of Configuration for Full Stack Open Part-0 to Part-7*
 <hr />
